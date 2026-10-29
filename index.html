@@ -120,7 +120,8 @@
       </svg>@olazabalcafe
     </a>
   </div>
-  <section class="rs" id="resenas" aria-labelledby="rs-t">
+  <!-- Reseñas ocultas hasta sincronizar con Google: quitar el atributo hidden -->
+  <section class="rs" id="resenas" aria-labelledby="rs-t" hidden>
     <div class="rs__grano" aria-hidden="true"></div>
     <h2 class="rs__tit" id="rs-t">Los vecinos hablaron</h2>
     <div class="rs__escena">
@@ -166,6 +167,7 @@ body{background:var(--bg)}
 </script>
 
 <style id="resenas-css">
+#resenas[hidden]{display:none!important}
 .rs{position:relative;min-height:100vh;background:var(--bg);color:var(--fg);overflow:hidden;isolation:isolate;display:grid;place-items:center;align-content:center;padding:10vh 6vw 8vh;font-family:'DM Sans',sans-serif}
 .rs__grano{position:absolute;inset:0;z-index:-3;opacity:.05;pointer-events:none;background-size:180px;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .rs .rs__tit{margin:0 0 clamp(20px,4vh,40px);text-align:center;font-size:clamp(2rem,4.6vw,3.6rem);font-weight:300;letter-spacing:-.015em;line-height:1.08;text-wrap:balance}
