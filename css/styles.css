@@ -296,14 +296,14 @@
       .content, .hours-block, .address, .cta-carta, .social { animation: none; }
     }
 
-    /* Instagram arriba a la derecha (alineado con "Bella Vista · Buenos Aires"); antes iba abajo y lo tapaba el botón */
+    /* Instagram arriba a la derecha (alineado con "Ituzaingó · Buenos Aires"); antes iba abajo y lo tapaba el botón */
     .social {
       top: 24px; right: 32px; bottom: auto; left: auto;
       transform: none;
       display: inline-flex; align-items: center; gap: 6px;
     }
     .social svg { margin-right: 0 !important; flex: none; }
-    /* mismo fundido que "Bella Vista · Buenos Aires" (antes subía con fadeUp y quedaba a opacidad plena) */
+    /* mismo fundido que "Ituzaingó · Buenos Aires" (antes subía con fadeUp y quedaba a opacidad plena) */
     .social { opacity: 0.72; animation: cornerFade 1.2s ease-out 1.5s backwards; }
     .social:hover { opacity: 1; }
 
