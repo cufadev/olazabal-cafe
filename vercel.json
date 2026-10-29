@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/carta", "destination": "/carta/", "permanent": true }
+  ]
+}

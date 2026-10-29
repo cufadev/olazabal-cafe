@@ -31,14 +31,9 @@
       background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1800&q=80');
       background-size: cover;
       background-position: center 40%;
-      transform: scale(1.04);
-      animation: slowZoom 22s ease-out forwards;
+      /* sin movimiento: antes hacía un zoom lento (slowZoom) */
     }
 
-    @keyframes slowZoom {
-      from { transform: scale(1.04); }
-      to   { transform: scale(1.00); }
-    }
 
     .overlay {
       position: absolute;
@@ -236,4 +231,82 @@
       .hours-block { gap: 24px; }
       .hours-sep { display: none; }
       .corner-tl, .corner-br { display: none; }
+    }
+
+
+    /* ── SEO / integración con la carta ── */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+    h1.logo-wrap { font-size: inherit; font-weight: inherit; line-height: 0; }
+
+    /* contraste: los textos chicos estaban entre 0.28 y 0.4 de opacidad y casi no se leían */
+    .eyebrow    { opacity: 0.78; }
+    .tagline    { opacity: 0.82; }
+    .hours-label{ opacity: 0.72; }
+    .social     { opacity: 0.8; }
+    .social:hover { opacity: 1; }
+    .corner-tl, .corner-br { opacity: 0.72; }
+    @keyframes cornerFade { from { opacity: 0; } to { opacity: 0.72; } }
+
+    .address {
+      font-style: normal;
+      margin-top: 22px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fg);
+      opacity: 0.8;
+      font-weight: 300;
+      animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.95s both;
+    }
+    .cta-carta {
+      margin-top: 26px;
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 44px; padding: 0 28px;
+      border-radius: 999px;
+      background: var(--fg); color: var(--bg);
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      text-decoration: none;
+      transition: transform .25s ease, opacity .25s ease;
+      animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.05s both;
+    }
+    .cta-carta:hover { transform: translateY(-2px); opacity: 0.92; }
+    .cta-carta:focus-visible, .social:focus-visible { outline: 2px solid var(--fg); outline-offset: 4px; }
+
+    /* una sola pantalla sin scroll: en alturas bajas se compacta para que no se corte nada */
+    @media (max-height: 820px) {
+      .illus-wrap { margin-bottom: 12px; }
+      .eyebrow { margin-bottom: 16px; }
+      .logo-wrap { margin-bottom: 16px; }
+      .tagline { margin-bottom: 26px; }
+      .divider { margin-bottom: 22px; }
+      .address { margin-top: 14px; }
+      .cta-carta { margin-top: 18px; }
+    }
+    @media (max-height: 700px) {
+      .illus-wrap { width: 64px; height: 64px; margin-bottom: 8px; }
+      .eyebrow { margin-bottom: 10px; }
+      .tagline { margin-bottom: 16px; }
+      .divider { margin-bottom: 14px; }
+      .hours-value { font-size: 15px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .content, .hours-block, .address, .cta-carta, .social { animation: none; }
+    }
+
+    /* Instagram arriba a la derecha (alineado con "Bella Vista · Buenos Aires"); antes iba abajo y lo tapaba el botón */
+    .social {
+      top: 24px; right: 32px; bottom: auto; left: auto;
+      transform: none;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .social svg { margin-right: 0 !important; flex: none; }
+    /* mismo fundido que "Bella Vista · Buenos Aires" (antes subía con fadeUp y quedaba a opacidad plena) */
+    .social { opacity: 0.72; animation: cornerFade 1.2s ease-out 1.5s backwards; }
+    .social:hover { opacity: 1; }
+
+    @media (max-width: 520px) {
+      .social { top: 16px; right: 16px; }
     }
