@@ -1,5 +1,6 @@
 {
   "redirects": [
-    { "source": "/carta", "destination": "/carta/", "permanent": true }
+    { "source": "/carta", "destination": "/", "permanent": false },
+    { "source": "/carta/(.*)", "destination": "/", "permanent": false }
   ]
 }
